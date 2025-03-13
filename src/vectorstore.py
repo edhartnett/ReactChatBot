@@ -5,8 +5,8 @@ import json
 
 MODEL_NAME = "NovaSearch/stella_en_1.5B_v5"
 DB_PATH = "/home/ed/chroma_db"
-FAQ_FILE_PATH = "./faq.json"
-ALIENS_FILE_PATH = "./aliens.json"
+FAQ_FILE_PATH = "./data/faq.json"
+ALIENS_FILE_PATH = "./data/alien_races.json"
 
 class QuestionAnswerPairs:
     def __init__(self, question: str, answer: str):
@@ -54,6 +54,7 @@ class UfoSiteVectorStore:
         print("reading faq file...")
         with open(faq_file_path, "r") as f:
             faqs = json.load(f) 
+            print(faqs)
 
         print("adding faqs to collection..." + str(len(faqs)))
         self.faq_collection.add(
@@ -67,10 +68,11 @@ class UfoSiteVectorStore:
         print("reading aliens file...")
         with open(aliens_file_path, "r") as f:
             aliens = json.load(f) 
+            print(aliens)
 
         print("adding aliens to collection..." + str(len(aliens)))
         self.aliens_collection.add(
-            documents=[alien["details"] for alien in aliens],
+            documents=[alien["name"] + " " + alien["home_system"] + " " + alien["description"] + " " + alien["details"] for alien in aliens],
             ids=[str(i) for i in range(len(aliens))],
             metadatas=aliens
         )
@@ -79,18 +81,12 @@ class UfoSiteVectorStore:
     def query_faqs(self, query: str):
         return self.faq_collection.query(
             query_texts=[query],
-            n_results=5
+            n_results=2
         )
 
     def query_aliens(self, query: str):
         return self.aliens_collection.query(
             query_texts=[query],
-            n_results=5
-        )
-
-    def query_aliens(self, query: str):
-        return self.aliens_collection.query(
-            query_texts=[query],
-            n_results=5
+            n_results=2
         )
         

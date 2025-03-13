@@ -2,9 +2,9 @@ import streamlit as st
 from langchain_core.messages import AIMessage, HumanMessage
 from agent import graph
 
-st.set_page_config(page_title="UFO Bot", page_icon=":robot_face:")
+st.set_page_config(page_title="UFO Bot", page_icon=":robot_face:", layout="wide")
 
-left_col, main_col, right_col = st.columns([1,3,1])
+left_col, main_col, right_col = st.columns([1,3,3])
 if "message_history" not in st.session_state:
     st.session_state.message_history = [AIMessage(content="I am a UFOologist. Tell me about your UFO sighting.")]
 

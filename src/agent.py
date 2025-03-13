@@ -1,10 +1,11 @@
 # First we initialize the model we want to use.
-#from langchain_openai import ChatOpenAI
+
+from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from tools import query_ufo_faqs, query_aliens
 
-#model = ChatOpenAI(model="gpt-4o", temperature=0)
-model = ChatAnthropic(model="claude-3-5-haiku-latest")
+model = ChatOpenAI(model="gpt-4o", temperature=0)
+#model = ChatAnthropic(model="claude-3-5-haiku-latest")
 
 
 # For this tutorial we will use custom tool that returns pre-defined values for weather in two cities (NYC & SF)
