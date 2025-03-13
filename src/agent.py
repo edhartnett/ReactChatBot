@@ -33,13 +33,13 @@ from langgraph.prebuilt import create_react_agent
 
 graph = create_react_agent(model, tools=tools)
 
-def print_stream(stream):
-    for s in stream:
-        message = s["messages"][-1]
-        if isinstance(message, tuple):
-            print(message)
-        else:
-            message.pretty_print()
+# def print_stream(stream):
+#     for s in stream:
+#         message = s["messages"][-1]
+#         if isinstance(message, tuple):
+#             print(message)
+#         else:
+#             message.pretty_print()
 
-inputs = {"messages": [("user", "what is the weather in sf")]}
-print_stream(graph.stream(inputs, stream_mode="values"))
+# inputs = {"messages": [("user", "what is the weather in sf")]}
+# print_stream(graph.stream(inputs, stream_mode="values"))
