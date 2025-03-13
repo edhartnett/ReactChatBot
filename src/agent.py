@@ -1,6 +1,7 @@
 # First we initialize the model we want to use.
 #from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
+from tools import query_ufo_faqs, query_aliens
 
 #model = ChatOpenAI(model="gpt-4o", temperature=0)
 model = ChatAnthropic(model="claude-3-5-haiku-latest")
@@ -24,7 +25,7 @@ def get_weather(city: Literal["nyc", "sf"]):
         raise AssertionError("Unknown city")
 
 
-tools = [get_weather]
+tools = [get_weather, query_ufo_faqs, query_aliens]
 
 
 # Define the graph

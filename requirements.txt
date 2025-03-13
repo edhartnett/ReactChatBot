@@ -3,3 +3,6 @@ langgraph
 langchain_core
 langchain_anthropic
 streamlit
+chromadb
+llama-index
+llama_index.embeddings.huggingface
