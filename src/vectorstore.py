@@ -1,4 +1,4 @@
-from chromadb import PersistentClient, EmbeddingFunction, Embeddings
+from chromadb import PersistentClient, EmbeddingFunction, Embeddings, Client
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from typing import List
 import json
@@ -30,10 +30,11 @@ class CustomEmbeddingClass(EmbeddingFunction):
 class UfoSiteVectorStore:
     def __init__(self):
         print("creating db...")
-        db = PersistentClient(path=DB_PATH)
+        #self.db = PersistentClient(path=DB_PATH, allow_reset=True)
+        self.db = Client()
         custom_embedding_function = CustomEmbeddingClass(MODEL_NAME)
         print("creating collection for FAQ...")
-        self.faq_collection = db.get_or_create_collection(name="faq", embedding_function=custom_embedding_function)
+        self.faq_collection = self.db.get_or_create_collection(name="faq", embedding_function=custom_embedding_function)
         if self.faq_collection.count() == 0:
             print("FAQ collection is empty, loading...")
             self._load_faq_collection(FAQ_FILE_PATH)
@@ -42,7 +43,7 @@ class UfoSiteVectorStore:
             print("FAQ collection already exists, skipping loading.")
 
         print("creating collection for aliens...")
-        self.aliens_collection = db.get_or_create_collection(name="aliens", embedding_function=custom_embedding_function)
+        self.aliens_collection = self.db.get_or_create_collection(name="aliens", embedding_function=custom_embedding_function)
         if self.aliens_collection.count() == 0:
             print("Aliens collection is empty, loading...")
             self._load_aliens_collection(ALIENS_FILE_PATH)
@@ -59,8 +60,7 @@ class UfoSiteVectorStore:
         print("adding faqs to collection..." + str(len(faqs)))
         self.faq_collection.add(
             documents=[faq["question"] for faq in faqs] + [faq["answer"] for faq in faqs],
-            ids=[str(i) for i in range(2 * len(faqs))],
-            metadatas=faqs + faqs
+            ids=[str(i) for i in range(2 * len(faqs))]
         )
         print("faqs have been added to collection.")
 
@@ -73,8 +73,7 @@ class UfoSiteVectorStore:
         print("adding aliens to collection..." + str(len(aliens)))
         self.aliens_collection.add(
             documents=[alien["name"] + " " + alien["home_system"] + " " + alien["description"] + " " + alien["details"] for alien in aliens],
-            ids=[str(i) for i in range(len(aliens))],
-            metadatas=aliens
+            ids=[str(i) for i in range(len(aliens))]
         )
         print("aliens have been added to collection.")
 
@@ -89,4 +88,7 @@ class UfoSiteVectorStore:
             query_texts=[query],
             n_results=2
         )
-        
+    
+    def reset(self):
+        print("resetting...")
+        self.db.reset()

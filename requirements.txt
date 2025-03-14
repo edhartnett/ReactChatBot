@@ -6,3 +6,4 @@ streamlit
 chromadb
 llama-index
 llama_index.embeddings.huggingface
+nest_asyncio

@@ -1,8 +1,16 @@
 import streamlit as st
 from langchain_core.messages import AIMessage, HumanMessage
 from agent import graph
+from tools import reset
+import nest_asyncio
+import torch
+
+# Stop annoying exceptions.
+nest_asyncio.apply()
+torch.classes.__path__ = [] # add this line to manually set it to empty. 
 
 st.set_page_config(page_title="UFO Bot", page_icon=":robot_face:", layout="wide")
+
 
 left_col, main_col, right_col = st.columns([1,3,3])
 if "message_history" not in st.session_state:
@@ -11,6 +19,8 @@ if "message_history" not in st.session_state:
 with left_col:
     if st.button("Clear"):
         st.session_state.message_history = []
+    if st.button("reset"):
+        reset()
 
 with main_col:
     user_input = st.chat_input("Ask me anything about UFOs!")

@@ -34,5 +34,9 @@ def query_aliens(query: str) ->Tuple[str, List[Dict[str, str]]]:
     '''
     print("querying aliens...")
     results = vector_store.query_aliens(query)
-    print(results)
+    print(results["documents"][0])
     return (results["documents"][0], results)
+
+def reset():
+    print("resetting...")
+    vector_store.reset()
