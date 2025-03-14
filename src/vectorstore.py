@@ -30,7 +30,8 @@ class CustomEmbeddingClass(EmbeddingFunction):
 class UfoSiteVectorStore:
     def __init__(self):
         print("creating db...")
-        db = PersistentClient(path=DB_PATH)
+        #db = PersistentClient(path=DB_PATH)
+        db = Client()
         custom_embedding_function = CustomEmbeddingClass(MODEL_NAME)
         print("creating collection for FAQ...")
         self.faq_collection = db.get_or_create_collection(name="faq", embedding_function=custom_embedding_function)
@@ -58,8 +59,7 @@ class UfoSiteVectorStore:
         print("adding faqs to collection..." + str(len(faqs)))
         self.faq_collection.add(
             documents=[faq["question"] for faq in faqs] + [faq["answer"] for faq in faqs],
-            ids=[str(i) for i in range(2 * len(faqs))],
-            metadatas=faqs + faqs
+            ids=[str(i) for i in range(2 * len(faqs))]
         )
         print("faqs have been added to collection.")
 
@@ -71,8 +71,7 @@ class UfoSiteVectorStore:
         print("adding aliens to collection..." + str(len(aliens)))
         self.aliens_collection.add(
             documents=[alien["details"] for alien in aliens],
-            ids=[str(i) for i in range(len(aliens))],
-            metadatas=aliens
+            ids=[str(i) for i in range(len(aliens))]
         )
         print("aliens have been added to collection.")
 
