@@ -58,5 +58,11 @@
     "home_system": "Vega",
     "description": "Members of Confederations of Humans",
     "details": "Representatives from the Vega star system who are active members of the Confederations of Humans. They contribute to the collective mission of assisting and protecting humanity as part of the positive energy alliance. While their specific roles and characteristics await further documentation, their participation in the confederation is noted in 'Revelations of Awareness' Issue #371."
+  },
+  {
+    "name": "Zxzx",
+    "home_system": "Zxzx",
+    "description": "Members of Confederations of Dorks",
+    "details": "Representatives from the Zxzx star system. These dorks have pocket-protectors and use the vi editor. They believe that debuggers are a new-fangled crutch for weaklings, and that sliderules are far more accurate than computers. Their spaceships can reach the local moon, but not very safely."
   }
 ]

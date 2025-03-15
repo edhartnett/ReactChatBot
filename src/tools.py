@@ -5,7 +5,7 @@ from vectorstore import UfoSiteVectorStore
 
 vector_store = UfoSiteVectorStore()
 
-@tool(response_format="content_and_artifact")
+@tool
 def query_ufo_faqs(query: str) -> Tuple[str, List[Dict[str, str]]]:
     '''
     Use this tool to get information about UFOs.
@@ -18,8 +18,8 @@ def query_ufo_faqs(query: str) -> Tuple[str, List[Dict[str, str]]]:
     '''
     print("querying faqs...")
     results = vector_store.query_faqs(query)
-    print(results)
-    return (results["documents"][0], results)
+    print(results["documents"][0])
+    return results["documents"][0]
 
 @tool(response_format="content_and_artifact")
 def query_aliens(query: str) ->Tuple[str, List[Dict[str, str]]]:
