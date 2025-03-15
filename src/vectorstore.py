@@ -1,5 +1,3 @@
-#from chromadb import PersistentClient, EmbeddingFunction, Embeddings, Client
-#from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from chromadb import Client, PersistentClient
 from typing import List
 import json
@@ -9,25 +7,6 @@ DB_PATH = "/home/ed/chroma_db"
 FAQ_FILE_PATH = "./data/faq.json"
 ALIENS_FILE_PATH = "./data/alien_races.json"
 
-# class QuestionAnswerPairs:
-#     def __init__(self, question: str, answer: str):
-#         self.question = question
-#         self.answer = answer
-
-# class AliensInfo:
-#     def __init__(self, name: str, home_system: str, description: str, details: str):
-#         self.name = name
-#         self.home_system = home_system
-#         self.description = description
-#         self.details = details
-
-# class CustomEmbeddingClass(EmbeddingFunction):
-#     def __init__(self, model_name: str):
-#         self.embedding_model = HuggingFaceEmbedding(model_name=MODEL_NAME)
-
-#     def __call__(self, input_texts: list[str]) -> Embeddings:
-#         return [self.embedding_model.get_text_embedding(text) for text in input_texts]
-
 class UfoSiteVectorStore:
     def __init__(self):
         print("creating db...")
@@ -35,7 +14,6 @@ class UfoSiteVectorStore:
         #self.db = Client()
         #custom_embedding_function = CustomEmbeddingClass(MODEL_NAME)
         print("creating collection for FAQ...")
-        #self.faq_collection = self.db.get_or_create_collection(name="faq", embedding_function=custom_embedding_function)
         self.faq_collection = self.db.get_or_create_collection(name="faq")
         if self.faq_collection.count() == 0:
             print("FAQ collection is empty, loading...")
@@ -85,7 +63,7 @@ class UfoSiteVectorStore:
         print(self.faq_collection.count())
         results = self.faq_collection.query(
             query_texts=[query],
-            n_results=2
+            n_results=1
         )
         print(results)
         return results
@@ -93,7 +71,7 @@ class UfoSiteVectorStore:
     def query_aliens(self, query: str):
         return self.aliens_collection.query(
             query_texts=[query],
-            n_results=2
+            n_results=1
         )
     
     def reset(self):

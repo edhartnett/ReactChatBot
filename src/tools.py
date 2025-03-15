@@ -19,9 +19,12 @@ def query_ufo_faqs(query: str) -> Tuple[str, List[Dict[str, str]]]:
     print("querying faqs...")
     results = vector_store.query_faqs(query)
     print(results["documents"][0])
+    print(results["distances"][0][0])
+    if (results["distances"][0][0] > 1.5):
+        return "I don't know."
     return results["documents"][0]
 
-@tool(response_format="content_and_artifact")
+@tool
 def query_aliens(query: str) ->Tuple[str, List[Dict[str, str]]]:
     '''
     Use this tool to get information about aliens.
@@ -35,7 +38,10 @@ def query_aliens(query: str) ->Tuple[str, List[Dict[str, str]]]:
     print("querying aliens...")
     results = vector_store.query_aliens(query)
     print(results["documents"][0])
-    return (results["documents"][0], results)
+    print(results["distances"][0][0])
+    if (results["distances"][0][0] > 1.5):
+        return "I don't know."
+    return results["documents"][0]
 
 def reset():
     print("resetting...")
