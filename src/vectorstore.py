@@ -40,8 +40,8 @@ class UfoSiteVectorStore:
 
         print("adding faqs to collection..." + str(len(faqs)))
         self.faq_collection.add(
-            documents=[faq["question"] for faq in faqs] + [faq["answer"] for faq in faqs],
-            ids=[str(i) for i in range(2 * len(faqs))]
+            documents=[faq["question"] + faq["answer"] for faq in faqs],
+            ids=[str(i) for i in range(len(faqs))]
         )
         print("faqs have been added to collection.")
 

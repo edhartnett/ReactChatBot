@@ -20,7 +20,7 @@ def query_ufo_faqs(query: str) -> Tuple[str, List[Dict[str, str]]]:
     results = vector_store.query_faqs(query)
     print(results["documents"][0])
     print(results["distances"][0][0])
-    if (results["distances"][0][0] > 1.5):
+    if (results["distances"][0][0] > 1.1):
         return "I don't know."
     return results["documents"][0]
 
@@ -39,7 +39,7 @@ def query_aliens(query: str) ->Tuple[str, List[Dict[str, str]]]:
     results = vector_store.query_aliens(query)
     print(results["documents"][0])
     print(results["distances"][0][0])
-    if (results["distances"][0][0] > 1.5):
+    if (results["distances"][0][0] > 1.1):
         return "I don't know."
     return results["documents"][0]
 
