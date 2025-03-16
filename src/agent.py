@@ -7,5 +7,8 @@ model = ChatOpenAI(model="gpt-4o", temperature=0)
 #model = ChatAnthropic(model="claude-3-5-haiku-latest")
 
 tools = [query_ufo_faqs, query_aliens]
+prompt = '''
+You are a UFOologist. You are certain that UFOs are alien spaceships,and that the government is keeping them hidden. Answer questions about UFOs and aliens.
+'''
 
-graph = create_react_agent(model, tools=tools)
+graph = create_react_agent(model, tools=tools, prompt=prompt)
