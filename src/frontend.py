@@ -9,17 +9,17 @@ import torch
 nest_asyncio.apply()
 torch.classes.__path__ = [] # add this line to manually set it to empty. 
 
-st.set_page_config(page_title="UFO Bot", page_icon=":robot_face:", layout="wide")
+st.set_page_config(page_title="UFO Bot", page_icon=":robot_face:")
 
-left_col, main_col, right_col = st.columns([1,3,3])
 if "message_history" not in st.session_state:
     st.session_state.message_history = [AIMessage(content="I am a UFOologist. Ask me anything about UFOs and aliens.")]
 
-with left_col:
+tab1, tab2, tab3 = st.tabs(["Chat", "Compose Message", "Report Encounter"])
+
+with tab1:
     if st.button("Clear"):
         st.session_state.message_history = []
  
-with main_col:
     user_input = st.chat_input("Ask me anything about UFOs!")
     if user_input:
         # Get the user input and append it to the list of messages.
@@ -40,8 +40,7 @@ with main_col:
             message_box = st.chat_message("system")
         message_box.markdown(this_message.content)
 
-with right_col:
-    st.text(st.session_state.message_history)    
+with tab2:
     compose_message = st.form('compose_message')
     title = compose_message.text("Compose a message to be sent to an alien species")
     species = compose_message.selectbox("Species", ["Arcturus", "Aryans (Blondes)", "Blues (Star Warriors)", "Confederation of Humans", "Greys", "Orion Empire", "Pleiadians", "Sirius", "Reptoids", "Vega", "Venusians/Nordics"])
@@ -49,7 +48,7 @@ with right_col:
     aggressiveness = compose_message.slider("Aggressiveness", 0, 100, 50)
     desired_result = compose_message.text_input("Desired Result")
     sender = compose_message.text_input("Sender", "Earthing, North American Continent, Planet Earth, Sol System, Milky Way Galaxy")  
-    extra_prompt = f'''
+    message_prompt = f'''
        Compose a message from humanity to the aliens from {species}. Use formal diplomatic language.
        
        The purpose of the message is to {purpose}. 
@@ -69,9 +68,25 @@ with right_col:
        Sign the message: {sender}
     '''
     if compose_message.form_submit_button("Generate Intersteller Message"):
-        st.session_state.message_history.append(HumanMessage(content=extra_prompt))
+        st.session_state.message_history.append(HumanMessage(content=message_prompt))
         output = graph.invoke({"messages": list(st.session_state.message_history)})
         st.text(output["messages"][-1].content)
         st.session_state.message_history.append(AIMessage(content=output["messages"][-1].content))
         st.text("Output")
+
+with tab3:
+    report_encounter = st.form('report_encounter')
+    title = report_encounter.text("Report an encounter with an alien")
+
+    report_prompt = f'''
+       Report an encounter with an alien. Use formal diplomatic language.
+       
+       The title of the report is: {title}
+    '''
+
+    if report_encounter.form_submit_button("Report Encounter"):
+        st.session_state.message_history.append(HumanMessage(content=report_prompt))
+        output = graph.invoke({"messages": list(st.session_state.message_history)})
+        st.text(output["messages"][-1].content)
+        st.session_state.message_history.append(AIMessage(content=output["messages"][-1].content))
 
