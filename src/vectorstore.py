@@ -53,7 +53,10 @@ class UfoSiteVectorStore:
 
         print("adding aliens to collection..." + str(len(aliens)))
         self.aliens_collection.add(
-            documents=[alien["name"] + " " + alien["home_system"] + " " + alien["description"] + " " + alien["details"] for alien in aliens],
+            documents=[
+                f"{alien['name']} home_system: {alien['home_system']} description: {alien['description']} trade goods: {alien['trade_goods']} art forms: {alien['art_forms']} details: {alien['details']}"
+                for alien in aliens
+            ],
             ids=[str(i) for i in range(len(aliens))]
         )
         print("aliens have been added to collection.")

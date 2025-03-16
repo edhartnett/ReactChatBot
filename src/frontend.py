@@ -47,19 +47,31 @@ with right_col:
     species = compose_message.selectbox("Species", ["Arcturus", "Aryans (Blondes)", "Blues (Star Warriors)", "Confederation of Humans", "Greys", "Orion Empire", "Pleiadians", "Sirius", "Reptoids", "Vega", "Venusians/Nordics"])
     purpose = compose_message.selectbox("Purpose of message", ["Communicate Peaceful Intent", "Establish Trade", "PScientific Exchange", "Warning", "Ask for Assistance", "Declare War"])
     aggressiveness = compose_message.slider("Aggressiveness", 0, 100, 50)
-    submit = compose_message.form_submit_button("Generate Intersteller Message")
-    extra_prompt = '''
-       Compose a message from humanity to the aliens from Arcturus. Use formal diplomatic language.
+    desired_result = compose_message.text_input("Desired Result")
+    sender = compose_message.text_input("Sender", "Earthing, North American Continent, Planet Earth, Sol System, Milky Way Galaxy")  
+    extra_prompt = f'''
+       Compose a message from humanity to the aliens from {species}. Use formal diplomatic language.
        
-       The purpose of the message is to Establish Trade. The agressiveness of the message should be high. 
-       The message should include mention of how our excellent sausagesm, and very nice submarines would be very popular there, and how we would enjoy their fine house-siced snuff-boxes, and wonderful silent singing performances on Earth.
+       The purpose of the message is to {purpose}. 
+       
+       The agressiveness of the message should be {aggressiveness} on a scale of 0 ro 100. If less than 20, be extremley subserviant. If greater than 80, be very threatening.
+       
+       The message should include mention of the tremendous productive capabilites of Earth, mentioning two randomly selected items, from two of these five categories.
+       * food items: pick something randomly that might by on a restaurant menu, but don't mention restaurants or menus. Chose from any cuisine. Mention details of the recipie, like ingredients, cooking method, and time to prepare.
+       * products: pick something randomly that might be sold at WalMart, mention a specific price for the item in "Earth Dollars"
+       * artistic activities: pick a random art form from any Earth culture. Be specific.
+       * weapons: pick a random weapon from any cuture at any period in history. Be specific and brag about it's effectiveness.
+       * technology: pick a random technology from any culture at any period in history. Be specific and brag about it's capabilities.
 
-       Sign the message: Edward Hartnett, UFOologist, North American Continent, Planet Earth, Sol System, Milky Way Galaxy
+       The desired result of the message is to {desired_result}. Mention some of the alien trade goods or art forms in relation to the message.
+
+
+       Sign the message: {sender}
     '''
-    st.session_state.message_history.append(HumanMessage(content=extra_prompt))
-    output = graph.invoke({"messages": list(st.session_state.message_history)})
-    st.text(output["messages"][-1].content)
-    st.session_state.message_history.append(AIMessage(content=output["messages"][-1].content))
-if submit:
-    st.text("Output")
+    if compose_message.form_submit_button("Generate Intersteller Message"):
+        st.session_state.message_history.append(HumanMessage(content=extra_prompt))
+        output = graph.invoke({"messages": list(st.session_state.message_history)})
+        st.text(output["messages"][-1].content)
+        st.session_state.message_history.append(AIMessage(content=output["messages"][-1].content))
+        st.text("Output")
 

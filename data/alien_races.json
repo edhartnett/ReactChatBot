@@ -3,66 +3,88 @@
     "name": "Arcturus",
     "home_system": "Arcturus",
     "description": "Members of Confederations of Humans",
+    "art_forms": ["quantum resonance poetry", "gravity wave sculptures", "temporal tapestries", "stellar frequency harmonics"],
+    "trade_goods": ["crystallized starlight", "temporal lubricants", "quantum meditation crystals", "gravity-resistant textiles"],
     "details": "Members of the Confederations of Humans, a collective of positive energy beings. Main source of information comes from 'Revelations of Awareness' Issue #371. Further research needed for more detailed information about their specific characteristics and activities."
   },
   { 
     "name": "Aryans (Blondes)",
     "home_system": "Unknown",
     "description": "Blond Nordic Humanoids who work with the greys",
+    "art_forms": ["psychic impression paintings", "memory crystal singing", "telepathic theater", "aetheric dance"],
+    "trade_goods": ["memory metals", "psychic enhancement serums", "bio-luminescent fabrics", "thought crystals"],
     "details": "Characterized as Blond Nordic Humanoids who maintain a complex relationship with both the Greys and other alien factions. They have been reportedly captured by the Reptoids and subjected to implantation procedures similar to those used on humans. Their loyalty is described as fluid, often shifting between the Reptoids and the Confederations of Humans. This information comes primarily from 'Revelations of Awareness' Issue #371."
   },
   {
     "name": "Blues (Star Warriors)",
     "home_system": "Unknown",
     "description": "Translucent-skinned beings with large almond shaped eyes",
+    "art_forms": ["light essence weaving", "spirit echo music", "wisdom crystal carving", "dream pattern dance"],
+    "trade_goods": ["holographic wisdom tablets", "spirit essence extracts", "living light sculptures", "dream catalysts"],
     "details": "Distinctive beings with translucent skin, large almond-shaped eyes, and small stature. Their primary teaching emphasizes personal authenticity: 'PURSUE YOUR PASSION, follow your own way, do your own thing.' Historical contact began in 1947-1948 when they warned the U.S. Government against forming treaties with the Greys, predicting disaster. After their peaceful approach was rejected by the military, they established a treaty with the Hopi Indians in Northern Mexico and Arizona, where they became known as Star Warriors. Due to Grey surveillance, they were forced into hiding with some Hopi Elders. Their story connects to the Hopi legend of two races: the children of the feather (sky beings) and children of the reptile (underground beings). This information comes from Robert Morningsky, a Hopi/Apache dancer, and is documented in sources including 'Star Warriors' and 'American Indian Magic' by Brad Steiger."
   },
   {
     "name": "Confederation of Humans",
     "home_system": "Multiple",
     "description": "Organization of alien groups born out of positive energy",
+    "art_forms": ["unity field compositions", "collective consciousness theater", "harmonic energy sculptures", "peace plasma paintings"],
+    "trade_goods": ["consciousness amplifiers", "harmony resonators", "unity field generators", "peace plasma"],
     "details": "A collective organization comprising various humanoid alien groups united by their positive energy and benevolent intentions toward humanity. Key member races include those from Vega, Arcturus, Sirius, and the Pleiades, among others. Their primary mission involves assisting and protecting the human race in its development. The organization stands in opposition to negative energy forces like the Orion Empire. This information is sourced from 'Revelations of Awareness' Issue #371, which details their structure and purpose in helping humanity's evolution."
   },
   {
     "name": "Greys",
     "home_system": "Unknown",
     "description": "Most commonly reported alien race in UFOlogy",
+    "art_forms": ["genetic sequence symphonies", "neural network paintings", "bio-synthetic sculptures", "temporal echo recordings"],
+    "trade_goods": ["genetic algorithms", "time dilation devices", "neural interface modules", "bio-synthetic hybrids"],
     "details": "The most frequently encountered and documented alien species in UFO literature. They appear in three main variants: 1) Most common type: 2-4 feet tall, very slender and delicate, with penetrating black slanted eyes lacking pupils, vestigial mouth and nose, large head with pointed chin, and skin varying from dark grey to pale white, completely hairless. 2) Similar but 6 inches taller, appearing to hold authority; some have rounded black button-like eyes. 3) Robot-like beings: stocky, with smooth rounded hats, deep-set eye holes, round O-shaped mouths, square breastplates with concentric circles, and mushroom-grey skin smelling like burnt matches. Additional variants include reptilian types with claws and praying mantis-like features, plus reported human-grey hybrids. Their activities primarily involve human abduction and experimentation. Various perspectives exist: Scientific views focus on their unknown motives and agendas; New Age interpretations often cast them as negative entities; Conspiracy theories suggest government treaties exchanging human subjects for technology. Main sources include works by David M. Jacobs ('Secret Life'), Whitley Strieber ('Communion'), and Budd Hopkins ('Missing Time', 'Intruders')."
   },
   {
     "name": "Orion Empire",
     "home_system": "Orion",
     "description": "Collective of alien groups born out of negative energy",
+    "art_forms": ["void resonance music", "dark matter sculptures", "entropy pattern weaving", "chaos field projections"],
+    "trade_goods": ["dark matter condensate", "void crystals", "entropy accelerators", "chaos matrices"],
     "details": "A confederation of alien groups characterized by negative energy and hostile intentions. Their forces notably include the Reptoids and Greys. They stand in opposition to the Confederation of Humans and are associated with various negative activities involving Earth and humanity. Information comes from 'Revelations of Awareness' Issue #371, though more detailed research is needed to fully document their activities and structure."
   },
   {
     "name": "Pleiadians",
     "home_system": "Pleiades",
     "description": "Advanced collective from various future timelines",
+    "art_forms": ["timeline intersection weaving", "dimensional harmony singing", "light language calligraphy", "ascension frequency dance"],
+    "trade_goods": ["timeline harmonizers", "dimensional frequency modulators", "ascension crystals", "light language codices"],
     "details": "A highly evolved collective originating from the Pleiades star system, spanning multiple future timelines from 500 to millions of years ahead. Their ancient culture was 'seeded' from a universe of love predating Earth's creation. They operate an advanced society based on love and concepts unfamiliar to current human understanding. Their mission includes helping Earth transition from the third to fourth dimension and preventing potential future tyranny. They work as ambassadors to assist in human awakening and empowerment. Notable contact cases include Billie Meier's 130+ encounters (1976-1982) with a Pleiadian named Samjese, documented in multiple volumes of 'UFO Contact from the Pleiades' and 'Message From the Pleiades'. Their teachings are also channeled through Barbara Marciniak in 'Bringers of the Dawn'. The Pleiadians later expanded to include other ET races, becoming the Pleiadians Plus. They primarily communicate through channeling, stating it's safer and less conspicuous than physical appearance."
   },
   {
     "name": "Sirius",
     "home_system": "Sirius",
     "description": "Members of Confederations of Humans",
+    "art_forms": ["stellar consciousness music", "aqua vitae sculptures", "cosmic frequency painting", "wisdom sphere theater"],
+    "trade_goods": ["stellar consciousness seeds", "aqua vitae elixirs", "cosmic frequency tuners", "wisdom spheres"],
     "details": "Active members of the Confederations of Humans, representing the Sirius star system. They participate in the collective effort to assist and protect humanity as part of the positive energy alliance. Primary source information comes from 'Revelations of Awareness' Issue #371, though detailed specifics about their unique characteristics and contributions await further research."
   },
   {
     "name": "Reptoids",
     "home_system": "Draco",
     "description": "Reptilian race focused on conquest",
+    "art_forms": ["shape-shift performance art", "psychic dominance music", "bio-mechanical sculptures", "quantum camouflage paintings"],
+    "trade_goods": ["shape-shifting compounds", "psychic control devices", "bio-mechanical implants", "quantum camouflage tech"],
     "details": "A reptilian species originating from the Draco star system with aggressive expansionist goals. They are reported to maintain control over the Greys through implant technology - the same type of implants that Greys use in human abductions. Their master plan reportedly involves creating and using 'Half-breeds' equipped with implants to combat the Confederations of Humans. Controversial reports suggest they view humans as a food source. Their activities and methods bear striking similarities to the plot of the television series 'V'. Information sourced from 'Revelations of Awareness' Issue #371, which details their hierarchy in the negative energy alliance and their opposition to human-friendly alien races."
   },
   {
     "name": "Vega",
     "home_system": "Vega",
     "description": "Members of Confederations of Humans",
+    "art_forms": ["zero-point energy music", "healing frequency sculptures", "light body dance", "galactic wisdom poetry"],
+    "trade_goods": ["zero-point energy crystals", "cosmic healing frequencies", "light body activation codes", "galactic wisdom archives"],
     "details": "Representatives from the Vega star system who are active members of the Confederations of Humans. They contribute to the collective mission of assisting and protecting humanity as part of the positive energy alliance. While their specific roles and characteristics await further documentation, their participation in the confederation is noted in 'Revelations of Awareness' Issue #371."
   },
   {
     "name": "Venusians/Nordics",
     "home_system": "Unknown (claimed to be Venus)",
     "description": "European-looking humanoids with long blonde hair",
+    "art_forms": ["etheric resonance dance", "magnetic field sculptures", "vibrational poetry", "solar consciousness theater"],
+    "trade_goods": ["etheric energy converters", "magnetic healing devices", "vibrational essence extracts", "solar consciousness maps"],
     "details": "Humanoid beings approximately 1.75m tall with European features and long blonde hair. First reported by George Adamski in the early 1950s. They are described as being very human-like in appearance, leading to speculation about their true origin. Some reports suggest they work independently, while others indicate possible cooperation with other alien races. Their claimed connection to Venus has been questioned by scientists due to Venus's inhospitable environment."
   }
 ]
