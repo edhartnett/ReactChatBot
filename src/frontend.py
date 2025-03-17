@@ -43,8 +43,12 @@ with tab1:
 with tab2:
     compose_message = st.form('compose_message')
     title = compose_message.text("Compose a message to be sent to an alien species")
-    species = compose_message.selectbox("Species", ["Arcturus", "Aryans (Blondes)", "Blues (Star Warriors)", "Confederation of Humans", "Greys", "Orion Empire", "Pleiadians", "Sirius", "Reptoids", "Vega", "Venusians/Nordics"])
-    purpose = compose_message.selectbox("Purpose of message", ["Communicate Peaceful Intent", "Establish Trade", "PScientific Exchange", "Warning", "Ask for Assistance", "Declare War"])
+    species = compose_message.selectbox("Species", ["Arcturus", "Aryans (Blondes)", "Blues (Star Warriors)", 
+    "Confederation of Humans", "Greys", "Orion Empire", "Pleiadians", "Sirius", "Reptoids", 
+    "Vega", "Venusians/Nordics"])
+    purpose = compose_message.selectbox("Purpose of message", ["Communicate Peaceful Intent", 
+    "Protest Abductions and Probing of Earhlngs", "Establish Trade", "Scientific Exchange", "Warning", 
+    "Ask for Assistance", "Declare War"])
     aggressiveness = compose_message.slider("Aggressiveness", 0, 100, 50)
     desired_result = compose_message.text_input("Desired Result")
     sender = compose_message.text_input("Sender", "Earthing, North American Continent, Planet Earth, Sol System, Milky Way Galaxy")  
@@ -60,33 +64,50 @@ with tab2:
        * products: pick something randomly that might be sold at WalMart, mention a specific price for the item in "Earth Dollars"
        * artistic activities: pick a random art form from any Earth culture. Be specific.
        * weapons: pick a random weapon from any cuture at any period in history. Be specific and brag about it's effectiveness.
-       * technology: pick a random technology from any culture at any period in history. Be specific and brag about it's capabilities.
+       * technology: pick a random technology from any culture at any period in history. Chose randomly between ancient technology, the middle ages, or the 1900s. 
+         Be specific and brag about it's capabilities.
 
        The desired result of the message is to {desired_result}. Mention some of the alien trade goods or art forms in relation to the message.
-
-
+       Reply in markdown.
        Sign the message: {sender}
     '''
     if compose_message.form_submit_button("Generate Intersteller Message"):
         st.session_state.message_history.append(HumanMessage(content=message_prompt))
         output = graph.invoke({"messages": list(st.session_state.message_history)})
-        st.text(output["messages"][-1].content)
+        st.markdown(output["messages"][-1].content)
         st.session_state.message_history.append(AIMessage(content=output["messages"][-1].content))
-        st.text("Output")
 
 with tab3:
     report_encounter = st.form('report_encounter')
     title = report_encounter.text("Report an encounter with an alien")
-
+    name = report_encounter.text_input("Name")
+    location = report_encounter.text_input("Location of encounter")
+    date = report_encounter.date_input("Date of encounter")
+    time = report_encounter.time_input("Time of encounter")
+    details = report_encounter.text_area("Details of encounter")
+    probing = report_encounter.checkbox("Probing")
+    probing_degree = report_encounter.slider("Degree of Probing", 0, 100, 50)
+    species = report_encounter.selectbox("Species", ["Unknown", "Arcturus", "Aryans (Blondes)", "Blues (Star Warriors)", "Confederation of Humans", "Greys", "Orion Empire", "Pleiadians", "Sirius", "Reptoids", "Vega", "Venusians/Nordics"])
     report_prompt = f'''
-       Report an encounter with an alien. Use formal diplomatic language.
+       Write a report an encounter with an alien to the United Nations Office for Outer Space Affairs (UNOOSA). 
+       Use clear, concise language like in a police report.
+       After showing the report, tell the UNOOSA to send a team to investigate. 
+       Format the report with markdown. Believe every aspect of the report and suport it as much as possible.
        
-       The title of the report is: {title}
+      Create a title that reflects the user input.
+      The name of the person reporting the encounter is {name}.
+      The species of the alien is {species}.
+      The location of the encounter is {location}.
+      The date of the encounter is {date}.
+      The time of the encounter is {time}. 
+      The details of the encounter are {details}.
+      The encounter was had probing (on a scale from 0 to 100): {probing}. (Do not mention these numbers)
+      The degree of probing is {probing_degree}.
     '''
 
     if report_encounter.form_submit_button("Report Encounter"):
         st.session_state.message_history.append(HumanMessage(content=report_prompt))
         output = graph.invoke({"messages": list(st.session_state.message_history)})
-        st.text(output["messages"][-1].content)
+        st.markdown(output["messages"][-1].content)
         st.session_state.message_history.append(AIMessage(content=output["messages"][-1].content))
 
